@@ -1,20 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
+import {
+  SafeAreaView,
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
+  StatusBar,
+} from "react-native";
+import { Colors } from "react-native/Libraries/NewAppScreen";
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import ListScreen from "./Components/ListeScreen";
+import DetailFilm from "./Components/DetailFilm";
+const Stack = createStackNavigator();
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="LIST MOVIES" component={ListScreen} />
+        <Stack.Screen name="Details MOVIE" component={DetailFilm} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
+// <NavigationContainer>
+// <Stack.Navigator>
+//   <Stack.Screen name="LIST MOVIES" component={MovieListScreen} />
+//   <Stack.Screen name="Details MOVIE" component={MovieDetailScreen} />
+// </Stack.Navigator>
+// </NavigationContainer>
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  scrollView: {
+    backgroundColor: Colors.lighter,
   },
 });
